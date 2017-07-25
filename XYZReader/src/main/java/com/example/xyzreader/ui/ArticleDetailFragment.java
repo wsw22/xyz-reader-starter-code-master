@@ -11,6 +11,8 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
+import android.os.Handler;
+import android.os.Looper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -223,14 +225,29 @@ public class ArticleDetailFragment extends Fragment
       ImageLoaderHelper.getInstance(getActivity())
           .getImageLoader()
           .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
-            @Override public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
+            @Override
+            public void onResponse(final ImageLoader.ImageContainer imageContainer, boolean b) {
               Bitmap bitmap = imageContainer.getBitmap();
               if (bitmap != null) {
-                Palette p = Palette.generate(bitmap, 12);
-                mMutedColor = p.getDarkMutedColor(0xFF333333);
-                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
-                updateStatusBar();
+                Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+                  @Override public void onGenerated(Palette palette) {
+                    mMutedColor = palette.getMutedColor(0xFF333333);
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    Runnable runnable = new Runnable() {
+                      @Override public void run() {
+                        mPhotoView.setImageBitmap(imageContainer.getBitmap());
+                        mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
+                        updateStatusBar();
+                      }
+                    };
+                    handler.post(runnable);
+                  }
+                });
+                //Palette p = Palette.generate(bitmap, 12);
+                //mMutedColor = p.getDarkMutedColor(0xFF333333);
+                //mPhotoView.setImageBitmap(imageContainer.getBitmap());
+                //mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
+                //updateStatusBar();
               }
             }
 
