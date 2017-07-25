@@ -9,7 +9,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.WindowInsetsCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.view.View;
@@ -82,17 +85,28 @@ public class ArticleDetailActivity extends ActionBarActivity
       }
     });
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      mUpButtonContainer.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
-        @Override public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
-          view.onApplyWindowInsets(windowInsets);
-          mTopInset = windowInsets.getSystemWindowInsetTop();
-          mUpButtonContainer.setTranslationY(mTopInset);
-          updateUpButtonPosition();
-          return windowInsets;
-        }
-      });
-    }
+    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    //  mUpButtonContainer.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+    //    @Override public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
+    //      view.onApplyWindowInsets(windowInsets);
+    //      mTopInset = windowInsets.getSystemWindowInsetTop();
+    //      mUpButtonContainer.setTranslationY(mTopInset);
+    //      updateUpButtonPosition();
+    //      return windowInsets;
+    //    }
+    //  });
+    //}
+    ViewCompat.setOnApplyWindowInsetsListener(mUpButtonContainer,
+        new OnApplyWindowInsetsListener() {
+          @Override
+          public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+            ViewCompat.onApplyWindowInsets(mUpButtonContainer, insets);
+            mTopInset = insets.getSystemWindowInsetTop();
+            mUpButtonContainer.setTranslationY(mTopInset);
+            updateUpButtonPosition();
+            return insets;
+          }
+        });
 
     if (savedInstanceState == null) {
       if (getIntent() != null && getIntent().getData() != null) {
