@@ -9,6 +9,7 @@
       android:id="@+id/swipe_refresh_layout"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
       >
 
     <android.support.v7.widget.RecyclerView
@@ -19,49 +20,22 @@
         android:paddingBottom="28dp"
         android:paddingLeft="@dimen/list_side_margin"
         android:paddingRight="@dimen/list_side_margin"
-        android:paddingTop="116dp"
         android:scrollbarStyle="outsideOverlay"
         />
   </android.support.v4.widget.SwipeRefreshLayout>
-
-  <!--<FrameLayout-->
-  <!--android:id="@+id/toolbar_container"-->
-  <!--android:layout_width="match_parent"-->
-  <!--android:layout_height="112dp"-->
-  <!--android:background="?colorPrimary"-->
-  <!--android:elevation="8dp">-->
-
-  <!--<android.support.v7.widget.Toolbar-->
-  <!--android:id="@+id/toolbar"-->
-  <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-  <!--android:layout_marginLeft="@dimen/list_toolbar_side_margin"-->
-  <!--android:layout_marginRight="@dimen/list_toolbar_side_margin"-->
-  <!--android:layout_width="match_parent"-->
-  <!--android:layout_height="?actionBarSize"-->
-  <!--android:layout_gravity="bottom">-->
-
-  <!--<ImageView-->
-  <!--android:layout_width="wrap_content"-->
-  <!--android:layout_height="wrap_content"-->
-  <!--android:src="@drawable/logo"-->
-  <!--android:contentDescription="@string/app_name" />-->
-
-  <!--</android.support.v7.widget.Toolbar>-->
-  <!--</FrameLayout>-->
 
   <android.support.design.widget.AppBarLayout
       android:id="@+id/toolbar_container"
       android:layout_width="match_parent"
       android:layout_height="112dp"
-      android:background="?colorPrimary"
-      android:elevation="8dp"
+      android:gravity="bottom"
+      app:elevation="4dp"
       >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_gravity="bottom"
         android:layout_marginLeft="@dimen/list_toolbar_side_margin"
         android:layout_marginRight="@dimen/list_toolbar_side_margin"
         app:layout_scrollFlags="scroll|enterAlways"
@@ -79,85 +53,3 @@
   </android.support.design.widget.AppBarLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-
-    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:orientation="vertical"-->
-    <!--&gt;-->
-
-    <!--<android.support.v4.widget.SwipeRefreshLayout-->
-    <!--android:id="@+id/swipe_refresh_layout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--&gt;-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-    <!--android:id="@+id/recycler_view"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:clipToPadding="false"-->
-    <!--android:paddingBottom="28dp"-->
-    <!--android:paddingLeft="@dimen/list_side_margin"-->
-    <!--android:paddingRight="@dimen/list_side_margin"-->
-    <!--android:paddingTop="116dp"-->
-    <!--android:scrollbarStyle="outsideOverlay"-->
-    <!--/>-->
-    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
-
-    <!--&lt;!&ndash;<FrameLayout&ndash;&gt;-->
-    <!--&lt;!&ndash;android:id="@+id/toolbar_container"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_height="112dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:background="?colorPrimary"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:elevation="8dp">&ndash;&gt;-->
-
-    <!--&lt;!&ndash;<android.support.v7.widget.Toolbar&ndash;&gt;-->
-    <!--&lt;!&ndash;android:id="@+id/toolbar"&ndash;&gt;-->
-    <!--&lt;!&ndash;app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_marginLeft="@dimen/list_toolbar_side_margin"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_marginRight="@dimen/list_toolbar_side_margin"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_height="?actionBarSize"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_gravity="bottom">&ndash;&gt;-->
-
-    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:src="@drawable/logo"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:contentDescription="@string/app_name" />&ndash;&gt;-->
-
-    <!--&lt;!&ndash;</android.support.v7.widget.Toolbar>&ndash;&gt;-->
-    <!--&lt;!&ndash;</FrameLayout>&ndash;&gt;-->
-
-    <!--<android.support.design.widget.AppBarLayout-->
-    <!--android:id="@+id/toolbar_container"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="112dp"-->
-    <!--android:background="?colorPrimary"-->
-    <!--android:elevation="8dp"-->
-    <!--&gt;-->
-
-    <!--<android.support.v7.widget.Toolbar-->
-    <!--android:id="@+id/toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="?actionBarSize"-->
-    <!--android:layout_gravity="bottom"-->
-    <!--android:layout_marginLeft="@dimen/list_toolbar_side_margin"-->
-    <!--android:layout_marginRight="@dimen/list_toolbar_side_margin"-->
-    <!--app:layout_scrollFlags="scroll|enterAlways"-->
-    <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-    <!--&gt;-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:contentDescription="@string/app_name"-->
-    <!--android:src="@drawable/logo"-->
-    <!--/>-->
-
-    <!--</android.support.v7.widget.Toolbar>-->
-    <!--</android.support.design.widget.AppBarLayout>-->
-
-    <!--</FrameLayout>-->
