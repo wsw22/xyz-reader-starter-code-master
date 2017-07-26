@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.support.design.widget.CoordinatorLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,7 +54,7 @@ public class ArticleDetailFragment extends Fragment
   private View mRootView;
   private int mMutedColor = 0xFF333333;
   private ObservableScrollView mScrollView;
-  private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
+  private CoordinatorLayout mDrawInsetsFrameLayout;
   private ColorDrawable mStatusBarColorDrawable;
 
   private int mTopInset;
@@ -115,12 +116,12 @@ public class ArticleDetailFragment extends Fragment
       Bundle savedInstanceState) {
     mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
     mDrawInsetsFrameLayout =
-        (DrawInsetsFrameLayout) mRootView.findViewById(R.id.draw_insets_frame_layout);
-    mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-      @Override public void onInsetsChanged(Rect insets) {
-        mTopInset = insets.top;
-      }
-    });
+        (CoordinatorLayout) mRootView.findViewById(R.id.draw_insets_frame_layout);
+    //mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
+    //  @Override public void onInsetsChanged(Rect insets) {
+    //    mTopInset = insets.top;
+    //  }
+    //});
 
     mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
     mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
@@ -160,7 +161,7 @@ public class ArticleDetailFragment extends Fragment
           (int) (Color.green(mMutedColor) * 0.9), (int) (Color.blue(mMutedColor) * 0.9));
     }
     mStatusBarColorDrawable.setColor(color);
-    mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
+    //mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
   }
 
   static float progress(float v, float min, float max) {
